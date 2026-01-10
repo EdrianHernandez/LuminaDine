@@ -1,14 +1,7 @@
-
 import React from 'react';
 import { Plus, Flame, Info } from 'lucide-react';
-import { MenuItem } from '../types';
 
-interface MenuItemGridProps {
-  items: MenuItem[];
-  onAddToCart: (item: MenuItem) => void;
-}
-
-const MenuItemGrid: React.FC<MenuItemGridProps> = ({ items, onAddToCart }) => {
+const MenuItemGrid = ({ items, onAddToCart }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 p-4 md:p-8 max-w-7xl mx-auto">
       {items.map((item) => (
@@ -49,8 +42,10 @@ const MenuItemGrid: React.FC<MenuItemGridProps> = ({ items, onAddToCart }) => {
             <div className="flex items-center gap-3 mt-auto">
               {item.calories && (
                 <div className="flex items-center gap-1 text-[11px] font-medium text-gray-400 bg-gray-50 px-2 py-0.5 rounded-md">
-                  <Info className="w-3 h-3" />
-                  {item.calories} kcal
+                  <span className="flex items-center gap-1">
+                    <Info className="w-3 h-3" />
+                    {item.calories} kcal
+                  </span>
                 </div>
               )}
               <div className="text-[11px] font-bold text-orange-600 tracking-wider">
