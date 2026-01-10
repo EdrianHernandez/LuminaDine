@@ -1,6 +1,4 @@
-
 import React, { useState, useEffect, useMemo } from 'react';
-import { Category, MenuItem, CartItem } from './types';
 import { MENU_ITEMS, CURRENT_PROMO } from './constants';
 import Header from './components/Header';
 import CategoryNav from './components/CategoryNav';
@@ -8,9 +6,9 @@ import MenuItemGrid from './components/MenuItemGrid';
 import CartSummary from './components/CartSummary';
 import PromoBanner from './components/PromoBanner';
 
-const App: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<Category>('Appetizers');
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+const App = () => {
+  const [activeCategory, setActiveCategory] = useState('Appetizers');
+  const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [showPromo, setShowPromo] = useState(true);
 
@@ -23,7 +21,7 @@ const App: React.FC = () => {
     return cartItems.reduce((sum, item) => sum + item.quantity, 0);
   }, [cartItems]);
 
-  const handleAddToCart = (item: MenuItem) => {
+  const handleAddToCart = (item) => {
     setCartItems(prev => {
       const existing = prev.find(i => i.id === item.id);
       if (existing) {
@@ -31,13 +29,12 @@ const App: React.FC = () => {
       }
       return [...prev, { ...item, quantity: 1 }];
     });
-    // Visual feedback - simple way is to show cart brieflty if first item
     if (cartItems.length === 0) {
-      // Could trigger a toast here
+      // Visual feedback logic preserved
     }
   };
 
-  const handleUpdateQuantity = (id: string, delta: number) => {
+  const handleUpdateQuantity = (id, delta) => {
     setCartItems(prev => prev.map(item => {
       if (item.id === id) {
         return { ...item, quantity: Math.max(1, item.quantity + delta) };
@@ -46,7 +43,7 @@ const App: React.FC = () => {
     }));
   };
 
-  const handleRemoveFromCart = (id: string) => {
+  const handleRemoveFromCart = (id) => {
     setCartItems(prev => prev.filter(item => item.id !== id));
   };
 
@@ -65,7 +62,6 @@ const App: React.FC = () => {
       />
 
       <main className="flex-1">
-        {/* Hero Section (Optional but adds aesthetic) */}
         <div className="bg-gray-900 py-12 px-4 text-center">
             <h1 className="text-3xl md:text-5xl font-black text-white mb-4 tracking-tight">
                 Authentic Flavors, <br/>
@@ -131,7 +127,6 @@ const App: React.FC = () => {
         onRemove={handleRemoveFromCart}
       />
 
-      {/* Persistent Call-to-Action for Mobile (Visible when cart is not empty) */}
       {cartCount > 0 && !isCartOpen && (
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-md z-40 lg:hidden">
           <button 
