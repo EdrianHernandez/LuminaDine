@@ -1,13 +1,7 @@
-
 import React from 'react';
 import { ShoppingCart, Menu as MenuIcon, Search } from 'lucide-react';
 
-interface HeaderProps {
-  cartCount: number;
-  onCartToggle: () => void;
-}
-
-const Header: React.FC<HeaderProps> = ({ cartCount, onCartToggle }) => {
+const Header = ({ cartCount, onCartToggle }) => {
   return (
     <header className="bg-white border-b border-gray-100 px-4 h-16 flex items-center justify-between sticky top-0 z-50">
       <div className="flex items-center gap-4">
