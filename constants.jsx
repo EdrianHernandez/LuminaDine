@@ -1,7 +1,4 @@
-
-import { MenuItem, Promo } from './types';
-
-export const MENU_ITEMS: MenuItem[] = [
+export const MENU_ITEMS = [
   // Appetizers
   {
     id: 'a1',
@@ -98,14 +95,14 @@ export const MENU_ITEMS: MenuItem[] = [
   }
 ];
 
-export const CATEGORIES: { id: string; name: string }[] = [
+export const CATEGORIES = [
   { id: 'Appetizers', name: 'Appetizers' },
   { id: 'Mains', name: 'Mains' },
   { id: 'Desserts', name: 'Desserts' },
   { id: 'Drinks', name: 'Drinks' }
 ];
 
-export const CURRENT_PROMO: Promo = {
+export const CURRENT_PROMO = {
   id: 'p1',
   title: 'Weekend Special: 15% OFF',
   description: 'Use code WEEKEND15 on orders above $50. Ends Sunday.',
