@@ -1,17 +1,7 @@
-
 import React from 'react';
 import { X, Minus, Plus, ShoppingBag, Trash2 } from 'lucide-react';
-import { CartItem } from '../types';
 
-interface CartSummaryProps {
-  isOpen: boolean;
-  onClose: () => void;
-  items: CartItem[];
-  onUpdateQuantity: (id: string, delta: number) => void;
-  onRemove: (id: string) => void;
-}
-
-const CartSummary: React.FC<CartSummaryProps> = ({ 
+const CartSummary = ({ 
   isOpen, 
   onClose, 
   items, 
