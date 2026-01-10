@@ -1,14 +1,7 @@
-
 import React from 'react';
 import { Megaphone, X } from 'lucide-react';
-import { Promo } from '../types';
 
-interface PromoBannerProps {
-  promo: Promo;
-  onClose: () => void;
-}
-
-const PromoBanner: React.FC<PromoBannerProps> = ({ promo, onClose }) => {
+const PromoBanner = ({ promo, onClose }) => {
   return (
     <div className="bg-orange-600 text-white px-4 py-3 flex items-center justify-between shadow-md relative z-50">
       <div className="flex items-center gap-3">
